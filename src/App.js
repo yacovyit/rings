@@ -13,8 +13,7 @@ class App extends Component {
     }
     //bind function so we can use 'this' in the bind function
     this.login = this.login.bind(this);
-    this.onUsernameChange = this.onUsernameChange.bind(this);
-    this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
    login() {
     fetch("http://localhost:3030/signin",{
@@ -28,14 +27,10 @@ class App extends Component {
     .catch(e=> console.log(e))
     
   }
-  onUsernameChange(event){
-    console.log('onUserChange ' + event.target.value);
-    this.setState({username:event.target.value});  
+  onChange(event){
+    this.setState({ [event.target.id]:event.target.value});  
   }
-  onPasswordChange(event){
-    console.log('onPasswordChange ' + event.target.value);
-    this.setState({password:event.target.value})  
-  }
+  
 
   render() {
     return (
@@ -47,8 +42,7 @@ class App extends Component {
        {
          this.state.user ? <Rings user={this.state.user} /> : 
                            <Login onSubmit={this.login} 
-                                  onUsernameChange={this.onUsernameChange} 
-                                  onPasswordChange={this.onPasswordChange}/>
+                                  onChange={this.onChange} />
        }
     
       </div>

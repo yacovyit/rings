@@ -6,16 +6,16 @@ class Login extends Component{
         console.log(event.target.value)
     }
     render(){
-        let {onSubmit,onUsernameChange,onPasswordChange} = this.props;
+        let {onSubmit,onChange,onPasswordChange} = this.props;
         return (
             <div>
                 <h1>Login</h1>
                 <div className='login'>
                     <div>User
-                         <input type='text' placeholder='user' onChange={onUsernameChange} />
+                         <input id="username" type='text' placeholder='user' onChange={onChange} />
                     </div>
                     <div>Password
-                         <input type='password' placeholder='password' onChange={onPasswordChange} /> 
+                         <input id="password" type='password' placeholder='password' onChange={onChange} /> 
                     </div>
                     <button onClick={onSubmit}>Login</button>
                 </div>
